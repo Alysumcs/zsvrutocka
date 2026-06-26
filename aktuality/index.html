@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aktivity a aktuality – ZŠ Vrútocká 58</title>
+<link rel="icon" href="../assets/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-aktiv="Aktivity" data-hlbka="1">
+
+<div class="stranka-hlava">
+  <div class="obal">
+    <div class="omrvinky"><a href="../index.html">Úvod</a> › Aktivity</div>
+    <h1 id="hlavaNadpis">Aktivity a aktuality</h1>
+  </div>
+</div>
+
+<div class="obsah">
+  <div class="obal" id="obsahAkt"></div>
+</div>
+
+<script src="../data/aktuality.js"></script>
+<script>
+(function(){
+  var box=document.getElementById("obsahAkt");
+  var params=new URLSearchParams(location.search);
+  var id=params.get("id");
+  if(typeof AKTUALITY==="undefined"){box.innerHTML="<p>Články sa nepodarilo načítať.</p>";return;}
+
+  if(id){ // ----- DETAIL ČLÁNKU -----
+    var a=AKTUALITY.find(function(x){return String(x.id)===String(id);});
+    if(!a){box.innerHTML="<p>Článok sa nenašiel. <a href='index.html'>Späť na zoznam</a></p>";return;}
+    document.getElementById("hlavaNadpis").textContent=a.t;
+    box.style.maxWidth="900px";
+    box.innerHTML='<p class="datum" style="color:var(--oranzova);font-weight:700">'+a.d+'</p>'
+      +'<div>'+a.c+'</div>'
+      +'<p style="margin-top:30px"><a class="btn btn-druhy" href="index.html">← Všetky aktivity</a></p>';
+    document.title=a.t+" – ZŠ Vrútocká 58";
+  } else { // ----- ZOZNAM -----
+    var stranka=0, naStranu=12;
+    box.innerHTML='<div class="clanky" id="zoznam"></div><div style="text-align:center;margin-top:34px"><button class="btn btn-hlavny" id="viac">Načítať ďalšie</button></div>';
+    var zoznam=document.getElementById("zoznam");
+    function pridaj(){
+      var cast=AKTUALITY.slice(stranka*naStranu,(stranka+1)*naStranu);
+      zoznam.insertAdjacentHTML("beforeend", cast.map(function(p){
+        var img=p.img?'<img loading="lazy" src="'+p.img+'" alt="">':'';
+        return '<article class="clanok"><a class="foto" href="index.html?id='+p.id+'">'+img+'</a>'
+          +'<div class="telo"><div class="datum">'+p.d+'</div>'
+          +'<h3><a href="index.html?id='+p.id+'">'+p.t+'</a></h3>'
+          +'<p>'+(p.e||'')+'</p>'
+          +'<a class="viac" href="index.html?id='+p.id+'">Čítať viac →</a></div></article>';
+      }).join(""));
+      stranka++;
+      if(stranka*naStranu>=AKTUALITY.length) document.getElementById("viac").style.display="none";
+    }
+    pridaj();
+    document.getElementById("viac").addEventListener("click",pridaj);
+  }
+})();
+</script>
+<script src="../data/oznamy.js"></script>
+<script src="../assets/main.js"></script>
+</body>
+</html>
