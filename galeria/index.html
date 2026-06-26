@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fotogaléria – ZŠ Vrútocká 58</title>
+<link rel="icon" href="../assets/favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-aktiv="Fotogaléria" data-hlbka="1">
+
+<div class="stranka-hlava">
+  <div class="obal">
+    <div class="omrvinky"><a href="../index.html">Úvod</a> › Fotogaléria</div>
+    <h1>📷 Fotogaléria</h1>
+    <p style="color:var(--text-svetly);margin:10px 0 0">Fotky zo života školy usporiadané po školských rokoch. Kliknite na rok a potom na udalosť.</p>
+  </div>
+</div>
+
+<div class="obsah">
+  <div class="obal" style="max-width:1100px">
+    <div id="galeria"></div>
+  </div>
+</div>
+
+<!-- Lightbox (prezeranie fotiek) -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-hlava"><span class="nazov" id="lbNazov"></span><button class="lb-zavri" onclick="zavriLB()">×</button></div>
+  <div class="lb-scena">
+    <button class="lb-sip lb-prev" onclick="dalsia(-1)">‹</button>
+    <img id="lbObr" src="" alt="">
+    <button class="lb-sip lb-next" onclick="dalsia(1)">›</button>
+  </div>
+  <div class="lb-pocitadlo" id="lbPocitadlo"></div>
+</div>
+
+<script src="../data/galerie.js"></script>
+<script src="../assets/galeria.js"></script>
+<script src="../data/oznamy.js"></script>
+<script src="../assets/main.js"></script>
+</body>
+</html>
