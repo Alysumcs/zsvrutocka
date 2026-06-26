@@ -417,7 +417,7 @@ h2.cz::after{content:"";position:absolute;left:0;bottom:0;width:60px;height:3px;
   .bocny{position:static;flex-direction:row;flex-wrap:wrap}
   .bocny>*{flex:1 1 220px}
   .hero .obal{grid-template-columns:1fr;gap:28px;padding:54px 28px 64px}
-  .hero-foto{height:300px;max-width:480px}
+  .hero-foto{height:300px;max-width:480px;margin:0 auto}
   .clanky{grid-template-columns:repeat(2,1fr)}
   .mriezka-4{grid-template-columns:repeat(2,1fr)}
   .ikon-tlacidla{grid-template-columns:repeat(2,1fr);margin-top:24px}
@@ -439,5 +439,11 @@ h2.cz::after{content:"";position:absolute;left:0;bottom:0;width:60px;height:3px;
   .hamburger{display:block}
   .clanky,.mriezka-4,.mriezka-3,.ikon-tlacidla,.udalosti{grid-template-columns:1fr}
   .stat:nth-child(n){border:0}
+  /* Hero na mobile: fotka hore nad nadpisom */
+  .hero .obal{gap:18px;padding:34px 22px 48px}
+  .hero-foto{order:-1;height:auto;max-width:340px;margin:0 auto}
+  .hero-png{width:100%;transform:none;animation:none}
+  .hero-deko{display:none}
+  .modra-skola{top:8px;left:auto;right:14px;transform:none;animation:none}
 }
 @media (prefers-reduced-motion: reduce){*{animation:none!important}.odhal{opacity:1;transform:none}}
