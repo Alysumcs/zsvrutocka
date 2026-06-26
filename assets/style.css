@@ -353,7 +353,7 @@ h2.cz::after{content:"";position:absolute;left:0;bottom:0;width:60px;height:3px;
 /* ---------- Pop-up oznam ---------- */
 .oznam-prekrytie{position:fixed;inset:0;background:rgba(15,30,30,.6);z-index:150;display:none;align-items:center;justify-content:center;padding:20px}
 .oznam-prekrytie.aktiv{display:flex}
-.oznam-okno{background:#fff;border-radius:var(--radius);max-width:540px;width:100%;max-height:88vh;display:flex;flex-direction:column;box-shadow:var(--tien-velky);overflow:hidden;animation:vstup .35s ease}
+.oznam-okno{background:#fff;border-radius:var(--radius);max-width:540px;width:100%;max-height:88vh;max-height:88dvh;display:flex;flex-direction:column;box-shadow:var(--tien-velky);overflow:hidden;animation:vstup .35s ease}
 .oznam-pasik{flex:0 0 auto;background:var(--oranzova);color:#fff;padding:15px 22px;font-weight:700;display:flex;justify-content:space-between;align-items:center;font-size:18px}
 .oznam-pasik button{background:none;border:0;color:#fff;font-size:26px;cursor:pointer;line-height:1;width:40px;height:40px;margin:-8px -10px -8px 8px;border-radius:50%;flex:0 0 auto;-webkit-tap-highlight-color:transparent}
 .oznam-pasik button:active{background:rgba(255,255,255,.2)}
@@ -361,8 +361,10 @@ h2.cz::after{content:"";position:absolute;left:0;bottom:0;width:60px;height:3px;
 .oznam-telo h3{margin:0 0 11px;font-size:23px}
 .oznam-telo p{margin:0 0 14px;color:var(--siva)}
 @media(max-width:600px){
-  .oznam-prekrytie{padding:12px;align-items:flex-end}
-  .oznam-okno{max-height:92vh}
+  .oznam-prekrytie{padding:12px;align-items:center;
+    padding-top:max(12px,env(safe-area-inset-top));
+    padding-bottom:max(12px,env(safe-area-inset-bottom))}
+  .oznam-okno{max-height:85vh;max-height:85dvh}
   .oznam-pasik{padding:13px 16px;font-size:16px}
   .oznam-telo{padding:18px}
   .oznam-telo h3{font-size:20px}
